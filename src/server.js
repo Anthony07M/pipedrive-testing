@@ -40,7 +40,7 @@ app.get("/notification", async (req, res) => {
     console.log("Recebido uma notificação:", notificationData);
 
     // Retorne uma resposta 200 OK para o Pipedrive
-    return res.status(200).send("ok");
+    return res.status(200).send(notificationData);
   } catch (error) {
     console.error("Erro ao processar a notificação:", error);
 
