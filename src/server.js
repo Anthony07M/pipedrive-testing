@@ -32,7 +32,7 @@ app.post("/webhook", async (req, res) => {
   return res.send({ msg: "webhook created!" });
 });
 
-app.get("/notification", async (req, res) => {
+app.post("/notification", async (req, res) => {
   try {
     const notificationData = req.body;
 
