@@ -1,7 +1,9 @@
 import express from "express";
 import pipedrive from "pipedrive";
+import bodyParser from "body-parser";
 
 const app = express();
+app.use(bodyParser.json())
 const PORT = 3000;
 
 const defaultClient = new pipedrive.ApiClient();
@@ -31,7 +33,20 @@ app.post("/webhook", async (req, res) => {
 });
 
 app.get("/notification", async (req, res) => {
-  return res.send("ok");
+  try {
+    const notificationData = req.body;
+
+    // Aqui você pode processar os dados recebidos
+    console.log("Recebido uma notificação:", notificationData);
+
+    // Retorne uma resposta 200 OK para o Pipedrive
+    return res.status(200).send("ok");
+  } catch (error) {
+    console.error("Erro ao processar a notificação:", error);
+
+    // Retorne uma resposta 500 em caso de erro
+    return res.status(500).send("Erro ao processar a notificação");
+  }
 });
 
 app.listen(PORT, () => {
