@@ -30,6 +30,10 @@ app.post("/webhook", async (req, res) => {
   return res.send({ msg: "webhook created!" });
 });
 
+app.get("/notification", async (req, res) => {
+  return res.send("ok");
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
